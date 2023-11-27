@@ -1,21 +1,17 @@
-import discord
 import os
 from dotenv import load_dotenv
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from openai import OpenAI
 import tweepy
-import pandas as pd
 import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 load_dotenv()
 
-bearer_token = os.getenv("TWITTER_BEARER_TOKEN")
+bearer_token = os.getenv('TWITTER_BEARER_TOKEN')
 client = tweepy.Client(bearer_token=bearer_token)
-query = "nasa -is:retweet -is:reply"
+query = 'nasa -is:retweet -is:reply'
 tweets = client.search_recent_tweets(
-    query=query, tweet_fields=["context_annotations", "created_at"], max_results=10
+    query=query, tweet_fields=['context_annotations', 'created_at'], max_results=10
 )
 attributes = [[tweet.text, tweet.created_at, tweet.id] for tweet in tweets.data]
 

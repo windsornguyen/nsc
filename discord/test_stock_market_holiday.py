@@ -127,5 +127,5 @@ class TestHolidayFunctionsSimplified(unittest.TestCase):
             self.assertEqual(is_holiday, should_be_holiday)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
